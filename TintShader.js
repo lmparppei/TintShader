@@ -52,15 +52,16 @@ THREE.TintShader = {
 		"}",
 
 		"void main() {",
-			"vec4 setLevel = vec4(level, level, level, level);",
-			"vec4 setGain = vec4(gain, gain, gain, gain);",
 			"vec4 color = texture2D( tDiffuse, vUv );",
 			"vec3 c = color.rgb;",
 
+			"float sum = color.r + color.g + color.b;",
+			"float darkAmount = 1.0 - sum;",
+
 			"if (monochrome) {",
-				"color = setLevel * toGrayscale(color) * (tintColor * amount) + darkColor * amount + gain;",
+				"color = level * toGrayscale(color) * (tintColor * amount) + darkColor * amount + gain;",
 			"} else {",
-				"color = setLevel * color * (tintColor * amount) + darkColor * amount + gain;",
+				"color = level * color * (tintColor * amount) + darkColor * darkAmount * amount + gain;",
 			"}",
 /*
 			"color.r = dot( c, tintColor );",
