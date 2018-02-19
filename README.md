@@ -1,6 +1,6 @@
 # TintShader
 
-![Sample iamge](https://www.dropbox.com/s/xtb3w4pl2unjak1/tintShader.jpg?dl=1 "Sample image")
+![Sample image](http://kapitan.fi/_git/tintShader.jpg "Sample image")
 
 Simple toning shader for Three.js
 
