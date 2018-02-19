@@ -59,9 +59,9 @@ THREE.TintShader = {
 			"float darkAmount = 1.0 - sum;",
 
 			"if (monochrome) {",
-				"color = level * toGrayscale(color) * (tintColor * amount) + darkColor * darkAmount * amount + gain;",
+				"color = gain + level * toGrayscale(color) * (tintColor * amount) + darkColor * darkAmount * amount;",
 			"} else {",
-				"color = level * color * (tintColor * amount) + darkColor * darkAmount * amount + gain;",
+				"color = gain + level * color * (tintColor * amount) + darkColor * darkAmount * amount;",
 			"}",
 /*
 			"color.r = dot( c, tintColor );",
