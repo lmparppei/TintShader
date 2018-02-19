@@ -11,8 +11,12 @@ THREE.TintShader = {
 	uniforms: {
 
 		"tDiffuse": { type: "t", value: null },
+		"amount":   { type: "f", value: 1.0 },
 		"tintColor":    { type: "vec4", value: null },
-		"darkColor":    { type: "vec4", value: null }
+		"darkColor":    { type: "vec4", value: null },
+		"level":    	{ type: "float", value: 1.0 },
+		"gain":    		{ type: "float", value: 0.0 },
+		"monochrome":   { type: "bool", value: false }
 
 	},
 
@@ -34,6 +38,9 @@ THREE.TintShader = {
 		"uniform float amount;",
 		"uniform vec4 tintColor;",
 		"uniform vec4 darkColor;",
+		"uniform float level;",
+		"uniform float gain;",
+		"uniform bool monochrome;",
 		"uniform sampler2D tDiffuse;",
 
 		"varying vec2 vUv;",
@@ -45,11 +52,16 @@ THREE.TintShader = {
 		"}",
 
 		"void main() {",
-
+			"vec4 setLevel = vec4(level, level, level, level);",
+			"vec4 setGain = vec4(gain, gain, gain, gain);",
 			"vec4 color = texture2D( tDiffuse, vUv );",
 			"vec3 c = color.rgb;",
 
-			"color = toGrayscale(color) * tintColor + darkColor;",
+			"if (monochrome) {",
+				"color = setLevel * toGrayscale(color) * (tintColor * amount) + darkColor * amount + gain;",
+			"} else {",
+				"color = setLevel * color * (tintColor * amount) + darkColor * amount + gain;",
+			"}",
 /*
 			"color.r = dot( c, tintColor );",
 			"color.g = dot( c, tintColor );",
