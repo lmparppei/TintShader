@@ -1,4 +1,7 @@
 # TintShader
+
+![Sample iamge](https://www.dropbox.com/s/xtb3w4pl2unjak1/tintShader.jpg?dl=1 "Sample image")
+
 Simple toning shader for Three.js
 
 Dirty and simple post-processing shader for creating color moods and mapping black. Created for personal needs, dread lightly.
