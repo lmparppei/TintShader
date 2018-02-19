@@ -1,17 +1,16 @@
 /**
  * @author KAPITAN! / http://kapitan.fi
  *
- * Tint shader, v 0.1
+ * Tint shader.
  * based on alteredq's sepia shader which was based on glfx.js sepia shader
  * https://github.com/evanw/glfx.js
  */
 
-THREE.SepiaShader = {
+THREE.TintShader = {
 
 	uniforms: {
 
 		"tDiffuse": { type: "t", value: null },
-		"amount":   { type: "f", value: 1.0 },
 		"tintColor":    { type: "vec4", value: null },
 		"darkColor":    { type: "vec4", value: null }
 
