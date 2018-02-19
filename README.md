@@ -5,9 +5,9 @@
 
 ### Simple toning shader for Three.js
 
-Dirty and simple post-processing shader for creating color moods and mapping black to a color. Includes gain and level settings.
+Post-processing shader for creating simple and dirty color grades. Includes gain and output level settings.
 
-Created for personal needs, dread lightly.
+Works best in monochrome. Created for personal needs, dread lightly.
 
 Released under MIT License.
 
