@@ -11,7 +11,6 @@ THREE.TintShader = {
 	uniforms: {
 
 		"tDiffuse": { type: "t", value: null },
-		"amount":   { type: "f", value: 1.0 },
 		"tintColor":    { type: "vec4", value: null },
 		"darkColor":    { type: "vec4", value: null },
 		"level":    	{ type: "float", value: 1.0 },
@@ -35,7 +34,6 @@ THREE.TintShader = {
 
 	fragmentShader: [
 
-		"uniform float amount;",
 		"uniform vec4 tintColor;",
 		"uniform vec4 darkColor;",
 		"uniform float level;",
@@ -59,16 +57,10 @@ THREE.TintShader = {
 			"float darkAmount = 1.0 - sum;",
 
 			"if (monochrome) {",
-				"color = gain + level * toGrayscale(color) * (tintColor * amount) + darkColor * darkAmount * amount;",
+				"color = gain + level * toGrayscale(color) * tintColor + darkColor * darkAmount;",
 			"} else {",
-				"color = gain + level * color * (tintColor * amount) + darkColor * darkAmount * amount;",
+				"color = gain + level * color * tintColor + darkColor * darkAmount;",
 			"}",
-/*
-			"color.r = dot( c, tintColor );",
-			"color.g = dot( c, tintColor );",
-			"color.b = dot( c, tintColor );",
-*/
-			
 
 			"gl_FragColor = vec4( min( vec3( 1.0 ), color.rgb ), color.a );",
 
