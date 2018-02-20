@@ -14,8 +14,8 @@ Released under MIT License.
 
 ```
 var tint = new THREE.ShaderPass( THREE.TintShader );
-tint.uniforms[ "tintColor" ].value = new THREE.Vector3(1.4, 1.1, .3, 1.0);
-tint.uniforms[ "darkColor" ].value = new THREE.Vector3(0, 0.25, 0.35, 1.0);
+tint.uniforms[ "tintColor" ].value = new THREE.Vector3(1.4, 1.1, .3);
+tint.uniforms[ "darkColor" ].value = new THREE.Vector3(0, 0.25, 0.35);
 tint.uniforms[ "monochrome" ].value = true; // default is false
 tint.uniforms[ "level" ].value = .9;
 tint.uniforms[ "gain" ].value = 0.02;
